@@ -26,7 +26,6 @@ namespace HideoutAutomation
         private ConfigEntry<bool> removeSkillRequirements;
         private ConfigEntry<bool> removeTraderRequirements;
         private ConfigEntry<KeyboardShortcut> resetDeclinedAreaUpdates;
-        private ConfigEntry<KeyboardShortcut> specialShortcut;
         private ConfigEntry<double> thresholdCurrencyHandover;
         private ConfigEntry<bool> useDialogWindow;
 
@@ -95,9 +94,6 @@ namespace HideoutAutomation
             this.removeTraderRequirements = this.Config.Bind("Payment", "RemoveTraderRequirements", false, "Remove the trader requirements for construction and upgrades.");
             this.removeTraderRequirements.SettingChanged += this.global_SettingChanged;
 
-            this.specialShortcut = this.Config.Bind("ProductionStacking", "SpecialShortcut", new KeyboardShortcut(KeyCode.LeftControl), "Key(s) to press to do some special operations like unstacking.");
-            this.specialShortcut.SettingChanged += this.global_SettingChanged;
-
             this.enableHideoutInProgressSupport = this.Config.Bind("HideoutInProgress", "EnableHideoutInProgressSupport", true, "HIP mod support.");
             this.enableHideoutInProgressSupport.SettingChanged += this.global_SettingChanged;
 
@@ -126,7 +122,6 @@ namespace HideoutAutomation
             Globals.RemoveSkillRequirements = this.removeSkillRequirements.Value;
             Globals.RemoveTraderRequirements = this.removeTraderRequirements.Value;
             Globals.ResetDeclinedAreaUpdates = this.resetDeclinedAreaUpdates.Value;
-            Globals.SpecialShortcut = this.specialShortcut.Value;
             Globals.ThresholdCurrencyHandover = this.thresholdCurrencyHandover.Value;
             Globals.UseDialogWindow = this.useDialogWindow.Value;
         }
