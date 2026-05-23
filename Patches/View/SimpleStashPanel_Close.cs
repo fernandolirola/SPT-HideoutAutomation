@@ -1,8 +1,6 @@
-﻿using Comfort.Common;
-using EFT.UI;
+﻿using EFT.UI;
 using HarmonyLib;
 using HideoutAutomation.Helpers;
-using HideoutAutomation.MonoBehaviours;
 using SPT.Reflection.Patching;
 using System;
 using System.Reflection;
@@ -19,7 +17,7 @@ namespace HideoutAutomation.Patches.View
                 SimpleStashPanel simpleStashPanel = __instance;
                 if (simpleStashPanel == null)
                     return;
-                Singleton<UpdateMonoBehaviour>.Instance.RemoveSimpleStashPanel(simpleStashPanel);
+                SimpleStashPanel_Show.SimpleStashPanels.Remove(simpleStashPanel);
             }
             catch (Exception ex)
             {

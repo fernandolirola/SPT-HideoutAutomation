@@ -6,6 +6,7 @@ using EFT.UI;
 using HideoutAutomation.Construction.Requests;
 using HideoutAutomation.Helpers;
 using HideoutAutomation.HIP;
+using HideoutAutomation.Patches.View;
 using Newtonsoft.Json;
 using SPT.Common.Http;
 using System;
@@ -47,7 +48,6 @@ namespace HideoutAutomation.MonoBehaviours
         private bool? lastRemoveSkillRequirements = null;
         private bool? lastRemoveTraderRequirements = null;
         private DateTime? lastRun = null;
-        private List<SimpleStashPanel> simpleStashPanels = [];
 
         public void Start()
         {
@@ -95,16 +95,6 @@ namespace HideoutAutomation.MonoBehaviours
             LogHelper.LogInfoWithNotification($"Declined Area(s) reset.");
 
             this.startCoroutine();
-        }
-
-        internal void AddSimpleStashPanel(SimpleStashPanel simpleStashPanel)
-        {
-            this.simpleStashPanels.Add(simpleStashPanel);
-        }
-
-        internal void RemoveSimpleStashPanel(SimpleStashPanel simpleStashPanel)
-        {
-            this.simpleStashPanels.Remove(simpleStashPanel);
         }
 
         private static string addSpaces(string input, int length)
@@ -455,7 +445,7 @@ namespace HideoutAutomation.MonoBehaviours
         private IEnumerator refreshSimpleStashPanels()
         {
             //HACK finally found a way to hard refresh the draw of SimpleStashPanel.
-            foreach (SimpleStashPanel simpleStashPanel in this.simpleStashPanels)
+            foreach (SimpleStashPanel simpleStashPanel in SimpleStashPanel_Show.SimpleStashPanels)
             {
                 ScrollRect? scroll = getStashScroll(simpleStashPanel);
                 float originalPosition = scroll?.verticalNormalizedPosition ?? 1.0f;
