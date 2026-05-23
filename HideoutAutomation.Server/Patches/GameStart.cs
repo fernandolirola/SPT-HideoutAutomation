@@ -16,11 +16,6 @@ namespace HideoutAutomation.Server.Patches
         [PatchPostfix]
         public static void PatchPostfix(MongoId sessionId)
         {
-            if (ServiceLocator.ServiceProvider.GetService<HideoutAutomationService>() is HideoutAutomationService automationService)
-            {
-                automationService.StartFromStack(sessionId);
-            }
-
             //HACK Fix player profile
             if (ServiceLocator.ServiceProvider.GetService<ProfileHelper>() is ProfileHelper profileHelper
                 && ServiceLocator.ServiceProvider.GetService<DatabaseService>() is DatabaseService databaseService)

@@ -2,7 +2,6 @@
 using BepInEx.Configuration;
 using HideoutAutomation.Helpers;
 using HideoutAutomation.Patches.Application;
-using HideoutAutomation.Patches.Hideout;
 using HideoutAutomation.Patches.View;
 using System;
 using UnityEngine;
@@ -50,15 +49,6 @@ namespace HideoutAutomation
         private void enablePatches()
         {
             new TarkovApplication_Init().Enable();
-
-            new HideoutClass_SetInventoryController().Enable();
-
-            new HideoutProductionRequirementView_Show().Enable();
-            new ProduceView_Close().Enable();
-            new ProduceView_Show().Enable();
-            new ProduceView_Update().Enable();
-            new ProduceView_UpdateView().Enable();
-            new ProductionPanel_Show().Enable();
             new SimpleStashPanel_Close().Enable();
             new SimpleStashPanel_Show().Enable();
         }
@@ -134,7 +124,6 @@ namespace HideoutAutomation
             Globals.EnableHideoutInProgressConfirmation = this.enableHideoutInProgressConfirmation.Value;
             Globals.IsHideoutInProgressSupportEnabled = this.enableHideoutInProgressSupport.Value;
             Globals.OnlyContributeWhenAreaRequirementsAreMet = this.onlyContributeWhenAreaRequirementsAreMet.Value;
-            Globals.ProductionStacking = this.enableProductionStacking.Value;
             Globals.RemoveAreaRequirements = this.removeAreaRequirements.Value;
             Globals.RemoveCurrencyRequirements = this.removeCurrencyRequirements.Value;
             Globals.RemoveItemRequirements = this.removeItemRequirements.Value;

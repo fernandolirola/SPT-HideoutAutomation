@@ -11,10 +11,7 @@ namespace HideoutAutomation.Server
         Task IOnLoad.OnLoad()
         {
             new GameStart().Enable();
-            new HandleRecipe().Enable();
             new MoveItem().Enable();
-            new SingleProductionStart().Enable();
-            new UnstackRewardIntoValidSize().Enable();
             new UpgradeComplete().Enable();
 
             return Task.CompletedTask;

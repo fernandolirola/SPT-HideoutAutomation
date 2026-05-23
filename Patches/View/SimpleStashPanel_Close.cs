@@ -1,8 +1,6 @@
-﻿using Comfort.Common;
-using EFT.UI;
+﻿using EFT.UI;
 using HarmonyLib;
 using HideoutAutomation.Helpers;
-using HideoutAutomation.MonoBehaviours;
 using SPT.Reflection.Patching;
 using System;
 using System.Reflection;
@@ -14,14 +12,12 @@ namespace HideoutAutomation.Patches.View
         [PatchPostfix]
         public static void PatchPostfix(SimpleStashPanel __instance)
         {
-            if (Globals.ProductionStacking == false)
-                return;
             try
             {
                 SimpleStashPanel simpleStashPanel = __instance;
                 if (simpleStashPanel == null)
                     return;
-                Singleton<UpdateMonoBehaviour>.Instance.RemoveSimpleStashPanel(simpleStashPanel);
+                SimpleStashPanel_Show.SimpleStashPanels.Remove(simpleStashPanel);
             }
             catch (Exception ex)
             {

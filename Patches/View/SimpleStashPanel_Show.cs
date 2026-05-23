@@ -1,27 +1,26 @@
-﻿using Comfort.Common;
-using EFT.UI;
+﻿using EFT.UI;
 using HarmonyLib;
 using HideoutAutomation.Helpers;
-using HideoutAutomation.MonoBehaviours;
 using SPT.Reflection.Patching;
 using System;
+using System.Collections.Generic;
 using System.Reflection;
 
 namespace HideoutAutomation.Patches.View
 {
     internal class SimpleStashPanel_Show : ModulePatch
     {
+        public static List<SimpleStashPanel> SimpleStashPanels = [];
+
         [PatchPostfix]
         public static void PatchPostfix(SimpleStashPanel __instance)
         {
-            if (Globals.ProductionStacking == false)
-                return;
             try
             {
                 SimpleStashPanel simpleStashPanel = __instance;
                 if (simpleStashPanel == null)
                     return;
-                Singleton<UpdateMonoBehaviour>.Instance.AddSimpleStashPanel(simpleStashPanel);
+                SimpleStashPanels.Add(simpleStashPanel);
             }
             catch (Exception ex)
             {
