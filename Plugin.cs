@@ -19,7 +19,6 @@ namespace HideoutAutomation
         private ConfigEntry<bool> debug;
         private ConfigEntry<bool> enableHideoutInProgressConfirmation;
         private ConfigEntry<bool> enableHideoutInProgressSupport;
-        private ConfigEntry<bool> enableProductionStacking;
         private ConfigEntry<bool> onlyContributeWhenAreaRequirementsAreMet;
         private ConfigEntry<bool> removeAreaRequirements;
         private ConfigEntry<bool> removeCurrencyRequirements;
@@ -95,9 +94,6 @@ namespace HideoutAutomation
 
             this.removeTraderRequirements = this.Config.Bind("Payment", "RemoveTraderRequirements", false, "Remove the trader requirements for construction and upgrades.");
             this.removeTraderRequirements.SettingChanged += this.global_SettingChanged;
-
-            this.enableProductionStacking = this.Config.Bind("ProductionStacking", "EnableProductionStacking", true, "(experimental) enable production stacking.");
-            this.enableProductionStacking.SettingChanged += this.global_SettingChanged;
 
             this.specialShortcut = this.Config.Bind("ProductionStacking", "SpecialShortcut", new KeyboardShortcut(KeyCode.LeftControl), "Key(s) to press to do some special operations like unstacking.");
             this.specialShortcut.SettingChanged += this.global_SettingChanged;
